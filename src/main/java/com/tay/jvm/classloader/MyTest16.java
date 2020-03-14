@@ -10,10 +10,8 @@ import java.io.InputStream;
  */
 public class MyTest16 extends ClassLoader {
     private String classLoaderName;
-
     // 从哪进行加载，如果没有指定就从项目下;
     private String path;
-
     // 指定类的后缀名;
     private final String fileExtension = ".class";
 
@@ -23,6 +21,11 @@ public class MyTest16 extends ClassLoader {
     }
 
     public MyTest16(ClassLoader parent, String classLoaderName) {
+        super(parent);// 显式指定该类加载器的父加载器;
+        this.classLoaderName = classLoaderName;
+    }
+
+    public MyTest16(ClassLoader parent) {
         super(parent);// 显式指定该类加载器的父加载器;
         this.classLoaderName = classLoaderName;
     }
@@ -58,7 +61,7 @@ public class MyTest16 extends ClassLoader {
 
         try {
             this.classLoaderName = this.classLoaderName.replace(".", "/");
-            is = new FileInputStream(new File(className + this.fileExtension));
+            is = new FileInputStream(new File(this.path + className + this.fileExtension));
             baos = new ByteArrayOutputStream();
 
             int ch = 0;
