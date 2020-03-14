@@ -1,7 +1,6 @@
 #java
 *.class
 out/
-src/
 
 #package file
 *.war
