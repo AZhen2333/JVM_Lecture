@@ -19,6 +19,7 @@ public class MyTest20 {
         MyTest16 loader1 = new MyTest16("loader1");
         MyTest16 loader2 = new MyTest16("loader2");
 
+        // clazz1和clazz2都由父加载器，即系统类加载器加载;
         Class<?> clazz1 = loader1.loadClass("com.tay.jvm.classloader.MyPerson");
         Class<?> clazz2 = loader2.loadClass("com.tay.jvm.classloader.MyPerson");
 
